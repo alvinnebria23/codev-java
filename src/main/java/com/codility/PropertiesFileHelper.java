@@ -51,7 +51,6 @@ public class PropertiesFileHelper {
                 }
                 APPLICATION_PROPERTIES = properties;
             }
-            
             // Purpose (#1): reuse cached properties to resolve the configured CSV file name.
             Properties properties = APPLICATION_PROPERTIES;
             // Purpose (#1): check common property names and return the first configured CSV file name/path.
