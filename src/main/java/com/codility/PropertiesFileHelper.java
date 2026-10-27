@@ -52,9 +52,9 @@ public class PropertiesFileHelper {
                 APPLICATION_PROPERTIES = properties;
             }
             
-            // Purpose: reuse the cached properties object so the CSV file name can be resolved once and reused.
+            // Purpose (#1): reuse cached properties to resolve the configured CSV file name.
             Properties properties = APPLICATION_PROPERTIES;
-            // Purpose: check the common property names for the CSV file name/path and return the first valid value.
+            // Purpose (#1): check common property names and return the first configured CSV file name/path.
             for (String key : CSV_FILE_NAME_KEYS) {
                 String value = properties.getProperty(key);
                 if (value != null && !value.trim().isEmpty()) {
@@ -62,7 +62,7 @@ public class PropertiesFileHelper {
                 }
             }
 
-            // Purpose: inspect remaining property entries for any alias that still matches the CSV file configuration.
+            // Purpose (#1): inspect remaining entries for an alias that identifies the CSV file configuration.
             for (String key : properties.stringPropertyNames()) {
                 String normalizedKey = key.replaceAll("[^A-Za-z0-9]", "").toLowerCase(Locale.ROOT);
                 if (normalizedKey.startsWith("csvfile")) {
